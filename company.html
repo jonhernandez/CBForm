@@ -1,0 +1,76 @@
+<html>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#form .send").click(function(e){
+			e.preventDefault();
+			let domain = $("#form input").val();
+            domain = domain.replace('www.','').replace('https://','').replace('http://');
+			$.ajax({
+				url: `https://cb-demo-backend.herokuapp.com/?company=${domain}`,
+				success: function(res){
+                    $("#company-name").val(res.name);
+                    $("#company-domain").val(res.domain);
+                    $("#company-description").val(res.description);
+                    $("#company-location").val(res.location);
+                    $("#company-linkedin").val(res.linkedin.handle);
+                    $("#company-twitter").val(res.twitter.handle);
+                    $("company-global-alexa-rank").val(res.metrics.alexaGlobalRank);
+                    $("company-estimated-annual-revenue").val(res.metrics.estimatedAnnualRevenue);
+				},
+			    dataType: "json"
+			});
+
+			return;
+		});
+
+		$(".clear").click(function(e){
+			e.preventDefault();
+			$("#name, #company, #title, #postal-code").val('');
+
+			return;
+		})
+	})
+</script>
+
+Hello!
+<div>
+	<form id="form">
+		<div>
+			<label>Domain: </label><input type="text" id="email" value="clearbit.com">
+		</div>
+		<div>
+			<button class='send'>Send</button>
+		</div>
+	</form>
+	<hr>
+	<div>
+		<div>
+			<label>Company Name: </label><input type="text" id="company-name">
+		</div>
+		<div>
+			<label>Company Domain: </label><input type="text" id="company-domain">
+		</div>
+		<div>
+			<label>Description: </label><input type="text" id="company-description">
+		</div>
+		<div>
+			<label>Company location: </label><input type="text" id="company-location">
+		</div>
+		<div>
+			<label>Linkedin: </label><input type="text" id="company-linkedin">
+		</div>
+		<div>
+			<label>Twitter: </label><input type="text" id="company-twitter">
+        </div>
+        <div>
+			<label>Global Alexa Rank: </label><input type="text" id="company-global-alexa-rank">
+        </div>
+        <div>
+			<label>Estimated Annual Revenue: </label><input type="text" id="company-estimated-annual-revenue">
+		</div>
+	</div>
+	<hr>
+	<button class='clear'>Clear enrichment</button>
+</div>
+</html>
