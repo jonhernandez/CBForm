@@ -4,11 +4,17 @@
     <form id="mktoForm_1052"></form>
     <script src="https://marketo.staging.clearbit.io/assets/v1/marketo/forms.js" data-clearbit-publishable-key="pk_9c8ef8ee9c606937a96f47034482eb43"></script>
     <script>
-    document.addEventListener("cb-enrichment-complete", function (e) {
+    document.addEventListener("clearbit-forms-marketo-enrichment-complete", function (e) {
       const { form } = e.detail;
       console.log('inside complete callback' ,form)
       // form is the MktoForms2 instance
       form.submittable(false);
+    })
+      
+      document.addEventListener("clearbit-forms-marketo-enrichment-error", function (e) {
+      const { form } = e.detail;
+      console.log('error callback' ,form)
+      // form is the MktoForms2 instance
     })
 
 
