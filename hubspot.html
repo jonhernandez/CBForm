@@ -116,7 +116,7 @@
           }
         } else {
 		
-	if ($input.val() && $input.val() !== '' && $input.css('display') === 'none'){
+	if ($input.val() && $input.val() !== '' && $input.parent().parent().css('display') === 'none'){
           $input.val('');
         }
 	else if ($input.val() && $input.val() !== ''){
