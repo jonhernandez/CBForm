@@ -115,7 +115,9 @@
             $field.hide();
           }
         } else {
-	  $input.val('').change();
+	if ($input.val() && $input.val() !== ''){
+            $input.val('').change();
+          }
           $field.show();
 	}
       });
