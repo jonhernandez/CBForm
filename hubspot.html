@@ -115,7 +115,11 @@
             $field.hide();
           }
         } else {
-	if ($input.val() && $input.val() !== ''){
+		
+	if ($input.val() && $input.val() !== '' && $input.css('display') === 'none'){
+          $input.val('');
+        }
+	else if ($input.val() && $input.val() !== ''){
             $input.val('').change();
           }
           $field.show();
