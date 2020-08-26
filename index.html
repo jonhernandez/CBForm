@@ -1,38 +1,10 @@
 <html>
   <head>
     <script src="//app-ab32.marketo.com/js/forms2/js/forms2.min.js"></script>
-    <form id="mktoForm_1052"></form>
-    <script src="https://marketo.staging.clearbit.io/assets/v1/marketo/forms.js" data-publishable-url="https://marketo.staging.clearbit.io" data-clearbit-publishable-key="pk_9c8ef8ee9c606937a96f47034482eb43"></script>
+    <form id="mktoForm_1001"></form>
+    <script>MktoForms2.loadForm("//app-ab32.marketo.com", "797-LZE-483", 1001);</script>
+    <script async src="https://marketo.dev.clearbit.io/assets/v1/marketo/forms.js" data-clearbit-publishable-key="pk_9c8ef8ee9c606937a96f47034482eb43"></script>
     <script>
-    document.addEventListener("clearbit-forms-marketo-enrichment-complete", function (e) {
-      const { form } = e.detail;
-      console.log('inside complete callback' ,form)
-      // form is the MktoForms2 instance
-      form.submittable(false);
-    })
-      
-      document.addEventListener("clearbit-forms-marketo-enrichment-error", function (e) {
-      const { form } = e.detail;
-      console.log('error callback' ,form)
-      // form is the MktoForms2 instance
-    })
-
-
-    </script>
-    <script>MktoForms2.loadForm("//app-ab32.marketo.com", "797-LZE-483", 1052);</script>
-    <script>
-      function pushToMarketo(response){
-      var reveal = response;
-      if(reveal && reveal.type === 'company'){
-        MktoForms2.whenReady(function(form){  
-          form.addHiddenFields({  
-            hernandezRevealCompanyName : reveal.company.name,  
-            hernandezRevealCompanyDomain : reveal.domain
-          });  
-          });  
-        }
-      }
-  </script>
   <script src="https://reveal.clearbit.com/v1/companies/reveal?authorization=pk_9c8ef8ee9c606937a96f47034482eb43&callback=pushToMarketo"></script>
 </head>
   <body>
